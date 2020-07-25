@@ -1,0 +1,48 @@
+{
+    "name": "redis-cache-viewer",
+    "version": "1.0.0",
+    "description": "Redis Cache Viewer",
+    "main": "src/app.ts",
+    "scripts": {
+      "build": "tsc",
+      "start": "nodemon",
+      "inspect": "nodemon --inspect src/app.ts",
+      "test": "jest",
+      "lint": "npm run lint:js ",
+      "lint:eslint": "eslint --ignore-path .gitignore --ext .ts",
+      "lint:js": "npm run lint:eslint src/",
+      "lint:fix": "npm run lint:js -- --fix"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/srswain2/redis-cache-viewer.git"
+    },
+    "keywords": [
+      "redis",
+      "js",
+      "javascript",
+      "typescript",
+      "node"
+    ],
+    "author": "General",
+    "license": "MIT",
+    "dependencies": {
+    },
+    "devDependencies": {
+      "@types/agenda": "^2.0.4",
+      "@types/jest": "^23.3.8",
+      "@types/node": "^10.14.8",
+      "@typescript-eslint/eslint-plugin": "^1.7.0",
+      "@typescript-eslint/parser": "^1.7.0",
+      "eslint": "^5.16.0",
+      "eslint-config-prettier": "^4.2.0",
+      "eslint-plugin-prettier": "^3.0.1",
+      "jest": "^24.1.0",
+      "nodemon": "^2.0.1",
+      "prettier": "^1.17.0",
+      "ts-jest": "^24.0.0",
+      "ts-node": "^7.0.1",
+      "tslint": "^5.11.0",
+      "typescript": "^3.1.3"
+    }
+  }
