@@ -1,5 +1,5 @@
 # Redis-Cache-Viewer
-A Crossplatform Open Source Tool for Azure Redis Cache
+A Crossplatform Open Source Tool for Azure Redis Cache.
 
 ## Authors
 1. Devyanshi Tiwari
