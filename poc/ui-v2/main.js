@@ -1,5 +1,5 @@
 'use strict';
-let splash
+
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
@@ -78,8 +78,8 @@ const createLoadingScreen = () => {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
 
-
     createLoadingScreen();
+
     setTimeout(() => {
         createWindow();
       }, 2000);

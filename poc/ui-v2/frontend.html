@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Key-Value Retreival</h1>
+    <h1>Key-Value Retrieval</h1>
 
     <div class="connectionstring-div">
         <form>
@@ -35,8 +35,9 @@
         <fieldset class="display-fieldset">
         <div class="key-value">
             <div style="margin-bottom: 10px;">
-            <label class="label-class">Key:</label>
-            <input type="text" id="key"  placeholder="Key" class="input-keyvalue">
+                <label class="label-class">Key:</label>
+                <input type="text" id="key" placeholder="Key" class="input-keyvalue">
+                <span class="error"><p id="keyerror"></p></span>
             </div>
             <div style="margin-top: 20px;">
             <label class="label-class">Value:</label>

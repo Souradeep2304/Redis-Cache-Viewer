@@ -1,7 +1,5 @@
 'use strict';
-function showAlert() {
-    alert ("Key Not Present");
-  }
+
 const { ipcRenderer, remote } = require('electron');
 
 const redis = require('redis');
@@ -42,11 +40,13 @@ get.addEventListener('click', function () {
             console.log(err)
         }
         if (result) {
-            console.log('Key:',key,' Value:', result)
+            console.log('Key:', key, ' Value:', result)
+            document.getElementById('keyerror').innerHTML = '';
             document.getElementById('value').value = result;
         } else {
             console.log('Key:',key, 'does not exist in Redis Cache')
-           showAlert();
+            document.getElementById('keyerror').innerHTML = 'Key Not Found!';
+
       
             
         }
