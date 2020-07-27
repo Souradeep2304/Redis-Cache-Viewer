@@ -47,6 +47,8 @@ function createWindow() {
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
 }
+
+// creating a loading screen 
 let loadingScreen;
 const createLoadingScreen = () => {
   /// create a browser window
@@ -57,6 +59,7 @@ const createLoadingScreen = () => {
       height:300,
       /// remove the window frame, so it will become a frameless window
       frame: false,
+      icon: __dirname + '/favicon.ico',
       /// and set the transparency, to remove any window background color
       transparent: true
     })

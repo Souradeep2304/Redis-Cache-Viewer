@@ -4,17 +4,17 @@ function showAlert() {
   }
 const { ipcRenderer, remote } = require('electron');
 
-var redis = require('redis');
+const redis = require('redis');
 const prompt = require('prompt-sync')();
 
 const connect = document.getElementById('connect');
 
 connect.addEventListener('click', function () {
 
-    var temp=document.getElementById('cstring').value.split(':');
+    const temp=document.getElementById('cstring').value.split(':');
     
-    var host=temp[0];
-    var port=temp[1];
+    const host=temp[0];
+    const port=temp[1];
    
     global.client = redis.createClient(port,host);
     
@@ -25,8 +25,8 @@ const set = document.getElementById('set');
 
 set.addEventListener('click', function () { 
     
-    var value=document.getElementById('value').value;
-    var key=document.getElementById('key').value;
+    const value=document.getElementById('value').value;
+    const key=document.getElementById('key').value;
     client.set(key, value, function (err, result) {
         console.log(result);
     });
@@ -35,7 +35,7 @@ set.addEventListener('click', function () {
 const get = document.getElementById('get');
 
 get.addEventListener('click', function () {
-    var key=document.getElementById('key').value;
+    const key=document.getElementById('key').value;
 
     client.get(key, function (err, result) {
         if (err) {
