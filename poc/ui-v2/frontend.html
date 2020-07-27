@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Redis Cache Viewer V1.0</title>
+    <link rel="stylesheet" href="styles.css">
+   
+</head>
+
+<body>
+    <h1>Welcome to Redis Cache Viewer</h1>
+
+    <div>
+        <form>
+            <fieldset class="connectionstring-fieldset">
+                <label class="label-class">Connection String:</label>
+                <input type="text" id="cstring"  placeholder="Enter Connection String here" class="input"></br>
+            </fieldset>
+        </form>
+      
+    </div>
+    <div>
+        <fieldset class="keys-fieldset">
+
+        </fieldset>
+    </div>
+    <div>
+        <fieldset class="display-fieldset">
+        <div class="key-value">
+            <div style="margin-bottom: 10px;">
+            <label class="label-class">Key:</label>
+            <input type="text" id="key"  placeholder="Key" class="input-keyvalue">
+            </div>
+            <div style="margin-top: 20px;">
+            <label class="label-class">Value:</label>
+            <input type="text" id="value"  placeholder="Value" class="input-keyvalue">
+            </div>
+        </div>
+        <div class="container-button" >
+                <button type="button" id="connect" class="button" >Connect to Redis</button>
+                <button type="button" id="set" class="button">Set Value</button>
+                <button type="button" id="get" class="button">Get Value</button>
+        </div>
+        </fieldset>
+    </div>
+    
+    
+    
+
+
+    <script src="./renderer.js"></script>
+</body>
+
+</html>
