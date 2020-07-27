@@ -1,0 +1,112 @@
+.connectionstring-div{
+  border-color: rgba(7, 7, 196, 0.856);
+  
+  
+}
+.connectionstring-fieldset{
+  border-color: rgba(7, 7, 196, 0.856);
+}
+
+
+.keys-div{
+  float: left; 
+  margin-top: 10px;
+  width:20%;
+}
+
+.keys-fieldset{
+  border-color: rgba(7, 7, 196, 0.856);
+  height: 500px;
+}
+
+
+
+.display-div{
+  margin-top: 10px;
+  float: right;
+  width:80%;
+}
+
+.display-fieldset{
+  border-color: rgba(7, 7, 196, 0.856);
+  height: 500px;
+}
+
+.key-value{
+ margin: 10px;
+}
+
+.container-button {
+  
+  text-align: center;
+  margin: 10px;
+  
+  
+}
+
+
+.input{
+  width: 85%;
+  float: right;
+  padding: 12px 20px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+.input-keyvalue{
+  width: 90%;
+  float: right;
+  padding: 12px 20px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+
+.label-class{
+  display: inline-block;
+  font-size: 20px;
+  
+  margin-top: 20px;
+  text-align: left;
+}
+
+
+.button{
+  margin-top: 50px;
+  margin-right: 20px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-size: 23px;
+  transition-duration: 0.4s;
+  border-color: rgba(77, 74, 245, 0.979);
+  border-width: 0.10em;
+
+}
+
+.button:hover{
+  background-color: rgb(77, 74, 245, 0.979); 
+  color: white;
+
+  }
+
+  
+.close-button{
+  margin-top: 50px;
+  margin-right: 20px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-size: 23px;
+  transition-duration: 0.4s;
+  border-color: rgb(97, 6, 18);
+  border-width: 0.10em;
+  
+  
+
+}
+
+.close-button:hover{
+  background-color: rgba(226, 24, 24, 0.979); 
+  color: white;
+
+  }
