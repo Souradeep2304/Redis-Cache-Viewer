@@ -22,7 +22,7 @@ connect.addEventListener('click', function () {
 const set = document.getElementById('set');
 
 set.addEventListener('click', function () { 
-    
+    document.getElementById('keyerror').innerHTML = '';
     const value=document.getElementById('value').value;
     const key=document.getElementById('key').value;
     client.set(key, value, function (err, result) {
