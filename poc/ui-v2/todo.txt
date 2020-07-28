@@ -1,0 +1,12 @@
+use soft blue colors, avoid red
+
+font on buttons should be smaller
+
+labels for the input
+
+title change it to something diff:(based on functionality)
+
+change the logo
+
+
+label for the alert

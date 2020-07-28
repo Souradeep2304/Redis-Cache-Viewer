@@ -17,30 +17,73 @@ function createWindow() {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
             enableRemoteModule: true
-        }
+        },
+        show: false
+  
+        
     });
+  
     
-    //mainWindow.maximize();
 
     // and load the index.html of the app.
     // mainWindow.loadFile('index.html');
+    
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, 'frontend.html'),
         protocol: 'file:',
         slashes: true
     }))
-
+  
+    mainWindow.maximize();
     // Removing the Menu Bar.
     mainWindow.setMenu(null);
-
+    mainWindow.webContents.on('did-finish-load', () => {
+        /// then close the loading screen window and show the main window
+        if (loadingScreen) {
+          loadingScreen.close();
+        }
+        mainWindow.show();
+      });
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
 }
 
+// creating a loading screen 
+let loadingScreen;
+const createLoadingScreen = () => {
+  /// create a browser window
+  loadingScreen = new BrowserWindow(
+    Object.assign({
+      /// define width and height for the window
+      width: 600,
+      height:300,
+      /// remove the window frame, so it will become a frameless window
+      frame: false,
+      icon: __dirname + '/favicon.ico',
+      /// and set the transparency, to remove any window background color
+      transparent: true
+    })
+  );
+  loadingScreen.setResizable(false);
+  loadingScreen.loadURL(
+    'file://' + __dirname + '/loading.html'
+  );
+  loadingScreen.on('closed', () => (loadingScreen = null));
+  loadingScreen.webContents.on('did-finish-load', () => {
+    loadingScreen.show();
+  });
+};
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(createWindow);
+app.on('ready', () => {
+
+    createLoadingScreen();
+
+    setTimeout(() => {
+        createWindow();
+      }, 2000);
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
