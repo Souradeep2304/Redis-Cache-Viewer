@@ -15,7 +15,20 @@ connect.addEventListener('click', function () {
     const port=temp[1];
    
     global.client = redis.createClient(port,host);
+    var list = document.createElement('ul');
+
     
+    client.keys('*', function (err, keys) {
+        var ul = document.createElement('ul');
+        document.getElementById('keydis').innerHTML = ""; 
+        document.getElementById('keydis').innerHTML = "<h2>Keys Present:</h2> ";
+        document.getElementById('keydis').appendChild(ul);
+        keys.forEach(function(key){
+			var li = document.createElement('li');
+			ul.appendChild(li);
+			li.innerHTML += key;
+		});
+    });
     //ipcRenderer.send("connect", args);
 });
 
@@ -27,6 +40,20 @@ set.addEventListener('click', function () {
     const key=document.getElementById('key').value;
     client.set(key, value, function (err, result) {
         console.log(result);
+    });
+
+    client.keys('*', function (err, keys) {
+        var ul = document.createElement('ul');
+        document.getElementById('keydis').innerHTML = ""; 
+        document.getElementById('keydis').innerHTML = "<h2>Keys Present:</h2> ";
+
+
+        document.getElementById('keydis').appendChild(ul);
+        keys.forEach(function(key){
+			var li = document.createElement('li');
+			ul.appendChild(li);
+			li.innerHTML += key;
+		});
     });
 });
 

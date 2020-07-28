@@ -34,3 +34,10 @@ client.get(key, function (err, result) {
         console.log('Key:',key, 'does not exist in Redis Cache')
     }
 });
+
+client.keys('*', function (err, keys) {
+    for(var i = 0, len = keys.length; i < len; i++) {
+        console.log(keys[i]);
+    }
+      
+});
