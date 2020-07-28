@@ -15,16 +15,16 @@ connect.addEventListener('click', function () {
     const port=temp[1];
    
     global.client = redis.createClient(port,host);
-    var list = document.createElement('ul');
+    const list = document.createElement('ul');
 
     
     client.keys('*', function (err, keys) {
-        var ul = document.createElement('ul');
+        const ul = document.createElement('ul');
         document.getElementById('keydis').innerHTML = ""; 
         document.getElementById('keydis').innerHTML = "<h2>Keys Present:</h2> ";
         document.getElementById('keydis').appendChild(ul);
         keys.forEach(function(key){
-			var li = document.createElement('li');
+			const li = document.createElement('li');
 			ul.appendChild(li);
 			li.innerHTML += key;
 		});
@@ -43,14 +43,14 @@ set.addEventListener('click', function () {
     });
 
     client.keys('*', function (err, keys) {
-        var ul = document.createElement('ul');
+        const ul = document.createElement('ul');
         document.getElementById('keydis').innerHTML = ""; 
         document.getElementById('keydis').innerHTML = "<h2>Keys Present:</h2> ";
 
 
         document.getElementById('keydis').appendChild(ul);
         keys.forEach(function(key){
-			var li = document.createElement('li');
+			const li = document.createElement('li');
 			ul.appendChild(li);
 			li.innerHTML += key;
 		});
