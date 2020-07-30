@@ -21,16 +21,18 @@ connect.addEventListener('click', function () {
     const port=temp[1];
    
     global.client = redis.createClient(port,host);
-    const list = document.createElement('ul');
+    const ul = document.getElementById("ul")
 
     
     client.keys('*', function (err, keys) {
-        const ul = document.createElement('ul');
-        document.getElementById('keydis').innerHTML = ""; 
-        document.getElementById('keydis').innerHTML = "<h3>Keys Present:</h3> ";
+        const ul = document.getElementById("ul")
+        document.getElementById('ul').innerHTML = ""; 
         document.getElementById('keydis').appendChild(ul);
         keys.forEach(function(key){
-			const li = document.createElement('li');
+            const li = document.createElement('li');
+            li.setAttribute("id", "listkey");
+            li.setAttribute("value", key);
+            li.setAttribute("onmousedown", "getvalue(this)");
 			ul.appendChild(li);
 			li.innerHTML += key;
 		});
@@ -41,7 +43,7 @@ connect.addEventListener('click', function () {
 const set = document.getElementById('set');
 
 set.addEventListener('click', function () { 
-    
+    document.getElementById('value').value ='';
     const value=document.getElementById('valueset').value;
     const key=document.getElementById('keyset').value;
     client.set(key, value, function (err, result) {
@@ -49,24 +51,24 @@ set.addEventListener('click', function () {
     });
 
     client.keys('*', function (err, keys) {
-        const ul = document.createElement('ul');
-        document.getElementById('keydis').innerHTML = ""; 
-        document.getElementById('keydis').innerHTML = "<h3>Keys Present:</h3> ";
-
-
+        const ul = document.getElementById("ul")
+        document.getElementById('ul').innerHTML = ""; 
         document.getElementById('keydis').appendChild(ul);
         keys.forEach(function(key){
 			const li = document.createElement('li');
-			ul.appendChild(li);
+            li.setAttribute("id", "listkey");
+            li.setAttribute("value", key);
+            li.setAttribute("onmousedown", "getvalue(this)");
+            ul.appendChild(li);
 			li.innerHTML += key;
 		});
     });
 });
 
-const get = document.getElementById('get');
+//const get = document.getElementById('listkey');
 
-get.addEventListener('click', function () {
-    const key=document.getElementById('key').value;
+function getvalue(elm) {
+    const key=elm.getAttribute('value');
 
     client.get(key, function (err, result) {
         if (err) {
@@ -74,11 +76,11 @@ get.addEventListener('click', function () {
         }
         if (result) {
             console.log('Key:', key, ' Value:', result)
-            document.getElementById('keyerror').innerHTML = '';
+            
             document.getElementById('value').value = result;
         } else {
             console.log('Key:',key, 'does not exist in Redis Cache')
-            document.getElementById('keyerror').innerHTML = 'Key Not Found!';
+          
 
       
             
@@ -86,7 +88,7 @@ get.addEventListener('click', function () {
      
     });
 
-});
+}
 
 
 
