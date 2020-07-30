@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Redis Cache Viewer V2.0</title>
+    <link rel="stylesheet" href="styles.css">   
+</head>
+
+<body>
+    <h1>Key-Value Retrieval</h1>
+    <div class="connectionstring-div">
+        <form>
+            <fieldset class="connectionstring-fieldset" >             
+                <div>
+                    <label class="label-class">Connection String:</label>
+                    <input type="text" id="cstring"   value="127.0.0.1:6379" class="input">
+                </div>
+                <div>
+                    <button type="button" id="connect" class="button" >Connect to Redis</button>
+                </div>
+                
+            </fieldset>
+        </form>  
+    </div>
+
+    <div class="savevalue-div">
+        <form>
+            <fieldset class="savevalue-fieldset" >             
+                <div style="margin-bottom: 20px;">
+                    <label class="label-class">Key:</label>
+                    <input type="text" id="keyset" class="input">
+                </div>
+                <div style="margin-top: 20px;">
+                    <label class="label-class">Value:</label>
+                    <input type="text" id="valueset" class="input">
+                </div>
+                <div>
+                    <button type="button" id="set" class="button" >Save</button>
+                </div>
+            </fieldset>
+        </form>  
+    </div>
+
+
+    <div class="keys-div" > 
+        <fieldset class="keys-fieldset" id="keydis">
+            <h3>Keys Present:</h3> 
+        </fieldset>
+    </div>
+    
+    <div  class="display-div">
+        <fieldset class="display-fieldset">
+       
+           
+        
+        </fieldset>  
+    </div>
+
+    <div style="float: right;">
+        <button type="button" id="closed" class="close-button">EXIT</button>
+    </div>
+
+    
+</body>
+
+
+</html>
+<script src="./renderer.js"></script>
