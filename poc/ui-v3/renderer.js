@@ -81,9 +81,6 @@ function getvalue(elm) {
         } else {
             console.log('Key:',key, 'does not exist in Redis Cache')
           
-
-      
-            
         }
      
     });
