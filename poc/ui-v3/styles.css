@@ -5,21 +5,21 @@
 
 
 .connectionstring-div{
-  border-color: rgba(7, 7, 196, 0.856);
+  border-color: #2196F3;
   margin-bottom: 10px;
   
 }
 .connectionstring-fieldset{
-  border-color: rgba(7, 7, 196, 0.856);
+  border-color: #2196F3;
 }
 
 .savevalue-div{
-  border-color: rgba(7, 7, 196, 0.856);
+  border-color: #2196F3;
   
   
 }
 .savevalue-fieldset{
-  border-color: rgba(7, 7, 196, 0.856);
+  border-color: #2196F3;
 }
 
 
@@ -30,7 +30,7 @@
 }
 
 .keys-fieldset{
-  border-color: rgba(7, 7, 196, 0.856);
+  border-color:#2196F3;
   height: 200px;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .display-fieldset{
-  border-color: rgba(7, 7, 196, 0.856);
+  border-color: #2196F3;
   height: 200px;
 }
 
