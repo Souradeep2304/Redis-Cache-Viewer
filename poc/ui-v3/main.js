@@ -1,14 +1,15 @@
 'use strict';
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain,Menu } = require('electron');
 const path = require('path');
 const url = require('url');
 
+let mainWindow;
 function createWindow() {
 
     // Create the browser window.
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         
         width: 1100,
         height: 800,
@@ -29,7 +30,7 @@ function createWindow() {
     // mainWindow.loadFile('index.html');
     
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'frontend.html'),
+        pathname: path.join(__dirname, 'welcome.html'),
         protocol: 'file:',
         slashes: true
     }))
@@ -47,6 +48,51 @@ function createWindow() {
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
 }
+
+
+function connectWindow() {
+
+  // Create the browser window.
+  const connectWindow = new BrowserWindow({
+      
+      width: 1100,
+      height: 800,
+      icon: __dirname + '/favicon.ico',
+      webPreferences: {
+          preload: path.join(__dirname, 'preload.js'),
+          nodeIntegration: true,
+          enableRemoteModule: true
+      },
+      show: false
+
+      
+  });
+
+  
+
+  // and load the index.html of the app.
+  // mainWindow.loadFile('index.html');
+  
+  connectWindow.loadURL(url.format({
+      pathname: path.join(__dirname, 'frontend.html'),
+      protocol: 'file:',
+      slashes: true
+  }))
+
+  connectWindow.maximize();
+  // Removing the Menu Bar.
+  connectWindow.setMenu(null);
+  connectWindow.webContents.on('did-finish-load', () => {
+      /// then close the loading screen window and show the main window
+      if (connectWindow) {
+        mainWindow.close();
+      }
+      connectWindow.show();
+    });
+  //Open the DevTools.
+  //mainWindow.webContents.openDevTools()
+}
+
 
 // creating a loading screen 
 let loadingScreen;
@@ -73,6 +119,38 @@ const createLoadingScreen = () => {
     loadingScreen.show();
   });
 };
+
+// menu bar
+const menuBar = () => {
+const template = [
+  {
+     label: 'File',
+     submenu: [
+        { 
+            label: 'Connect to Redis', 
+            click(){ 
+              connectWindow();
+              menuBar();
+            }
+        },
+        {
+          type: 'separator'
+        },
+        {
+           role: 'close', label:'Exit'
+        }
+     ]
+  }
+]
+
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
+}
+
+
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -82,6 +160,7 @@ app.on('ready', () => {
 
     setTimeout(() => {
         createWindow();
+        menuBar();
       }, 2000);
 });
 
