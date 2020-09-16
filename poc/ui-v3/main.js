@@ -6,6 +6,7 @@ const path = require('path');
 const url = require('url');
 
 let mainWindow;
+let connectWindow;
 function createWindow() {
 
     // Create the browser window.
@@ -43,6 +44,9 @@ function createWindow() {
         if (loadingScreen) {
           loadingScreen.close();
         }
+        if (connectWindow) {
+          connectWindow.close();
+        }
         mainWindow.show();
       });
     // Open the DevTools.
@@ -50,10 +54,10 @@ function createWindow() {
 }
 
 
-function connectWindow() {
+function createConnectWindow() {
 
   // Create the browser window.
-  const connectWindow = new BrowserWindow({
+  connectWindow = new BrowserWindow({
       
       width: 1100,
       height: 800,
@@ -84,7 +88,7 @@ function connectWindow() {
   connectWindow.setMenu(null);
   connectWindow.webContents.on('did-finish-load', () => {
       /// then close the loading screen window and show the main window
-      if (connectWindow) {
+      if (mainWindow) {
         mainWindow.close();
       }
       connectWindow.show();
@@ -121,7 +125,7 @@ const createLoadingScreen = () => {
 };
 
 // menu bar
-const menuBar = () => {
+const welcomemenuBar = () => {
 const template = [
   {
      label: 'File',
@@ -129,8 +133,8 @@ const template = [
         { 
             label: 'Connect to Redis', 
             click(){ 
-              connectWindow();
-              menuBar();
+              createConnectWindow();
+              connectmenuBar();
             }
         },
         {
@@ -148,6 +152,33 @@ const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 }
 
+const connectmenuBar = () => {
+  const template = [
+    {
+       label: 'File',
+       submenu: [
+          { 
+              label: 'About', 
+              click(){ 
+                createWindow();
+                welcomemenuBar();
+              }
+          },
+          {
+            type: 'separator'
+          },
+          {
+             role: 'close', label:'Exit'
+          }
+       ]
+    }
+  ]
+  
+  
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
+  }
+
 
 
 
@@ -160,7 +191,7 @@ app.on('ready', () => {
 
     setTimeout(() => {
         createWindow();
-        menuBar();
+        welcomemenuBar();
       }, 2000);
 });
 
