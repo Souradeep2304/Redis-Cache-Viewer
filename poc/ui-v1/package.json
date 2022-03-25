@@ -9,7 +9,7 @@
   "author": "Viswanatha Swamy",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^9.3.1"
+    "electron": "^13.6.6"
   },
   "dependencies": {
     "prompt-sync": "^4.2.0",
